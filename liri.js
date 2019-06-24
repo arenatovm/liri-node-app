@@ -25,11 +25,11 @@ switch (whatToDo) {
         break;
 }
 
-function spotifyThis(){
+function spotifyThis(song){
     spotify
-    .search({type: "track", query: "All the small things", limit: 1})
+    .search({type: "track", query: song, limit: 1})
     .then(function(response){
-        console.log(Json.stringfy(response, null, 2);
+        console.log(Json.stringfy(response.tracks.items[0], null, 2));
         
     })
     .catch(function(err){
