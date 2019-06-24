@@ -12,16 +12,16 @@ var userInput = process.argv[3];
 
 switch (whatToDo) {
     case "spotify-this-song":
-        sporifyThis()
+        sporifyThis(userInput)
         break;
     case "concert-this":
-        concertThis()
+        concertThis(userInput)
         break;
     case "movie-this":
-        movieThis()
+        movieThis(userInput)
         break;
     case "do-what-it-says":
-        doWhatItSays()
+        doWhatItSays(userInput)
         break;
 }
 
