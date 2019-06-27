@@ -5,14 +5,27 @@ var moment = require("moment");
 var fs = require("fs");
 
 var Spotify = require("node-spotify-api");
-var spotify = new spotify(keys.spotify);
+var spotify = new Spotify(keys.spotify);
 
 var whatToDo = process.argv[2];
 var userInput = process.argv[3];
 
+function spotifyThis(song){
+    spotify
+    .search({type: "track", query: song, limit: 1})
+    .then(function(response){
+        console.log(JSON.stringify(response.tracks.items[0], null, 2));
+        
+    })
+    .catch(function(err){
+        console.log(err);
+        
+    });
+}
+
 switch (whatToDo) {
     case "spotify-this-song":
-        sporifyThis(userInput)
+        spotifyThis(userInput)
         break;
     case "concert-this":
         concertThis(userInput)
@@ -25,15 +38,3 @@ switch (whatToDo) {
         break;
 }
 
-function spotifyThis(song){
-    spotify
-    .search({type: "track", query: song, limit: 1})
-    .then(function(response){
-        console.log(Json.stringfy(response.tracks.items[0], null, 2));
-        
-    })
-    .catch(function(err){
-        console.log(err);
-        
-    });
-}
